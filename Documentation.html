@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="my-3">
+      <h4><a id="top"></a>Documentation</h4>
+      <h5>States Data</h5>
+      <section class="my-3">
+        <a id="states-raw-current"></a>
+        <h6>States Raw Current Values</h6>
+        <pre>=GET_STATES_CURRENT_DATA_RAW()</pre>
+        <p>
+          Returns raw current data for all states with the following columns:
+        </p>
+        <ul>
+          <li><code>state</code> - State or territory postal code abbreviation.</li>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>positiveScore</code> - +1 for reporting positives reliably.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>negativeScore</code> - +1 for reporting negatives sometimes.</li>
+          <li><code>negativeRegularScore</code> - +1 for reporting negatives reliably.</li>
+          <li><code>commercialScore</code> - +1 for reporting all commercial tests.</li>
+          <li><code>score</code> - Total reporting quality score.</li>
+          <li><code>grade</code> - Letter grade based on score.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>dateModified</code> - ISO 8601 date of the time the data was last updated by the state.</li>
+          <li><code>dateChecked</code> - ISO 8601 date of the time we last visited their website</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has
+            been an unstable value and should not count in any totals.</li>
+        </ul>
+      </section>
+      <section class="my-3">
+        <a id="states-raw-historical"></a>
+        <h6>States Raw Historical Data</h6>
+        <pre>=GET_STATES_HISTORICAL_DATA_RAW()</pre>
+        <p>
+          Returns raw historical data for all states with the following columns. Data is saved each day at 4 pm ET.
+        </p>
+        <ul>
+          <li><code>date</code> - Date of the data.</li>
+          <li><code>state</code> - State or territory postal code abbreviation.</li>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>positiveScore</code> - +1 for reporting positives reliably.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>negativeScore</code> - +1 for reporting negatives sometimes.</li>
+          <li><code>negativeRegularScore</code> - +1 for reporting negatives reliably.</li>
+          <li><code>commercialScore</code> - +1 for reporting all commercial tests.</li>
+          <li><code>score</code> - Total reporting quality score.</li>
+          <li><code>grade</code> - Letter grade based on score.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>dateModified</code> - ISO 8601 date of the time the data was last updated by the state.</li>
+          <li><code>dateChecked</code> - ISO 8601 date of the time we last visited their website</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has
+            been an unstable value and should not count in any totals.</li>
+        </ul>
+      </section>
+      <section class="my-3">
+        <h6><a id="states-data"></a>Specific States Data</h6>
+        <pre>=GET_STATES_DATA(state, data, date)</pre>
+        <p>
+          Returns state related data, given a state, data, and date.
+        </p>
+        <p>
+          The <code>state</code> argument takes a states two letter abbreviation. A full list can be found below. Only
+          one
+          state argument at a time is currently supported. The argument can be provided as a string surrounded by double
+          quotes ("") or a reference to a cell
+          with the state string in it.
+        </p>
+        <ul>
+          <li><code>AK</code> - Alaska</li>
+          <li><code>AL</code> - Alabama</li>
+          <li><code>AR</code> - Arkansas</li>
+          <li><code>AS</code> - American Samoa</li>
+          <li><code>AZ</code> - Arizona</li>
+          <li><code>CA</code> - California</li>
+          <li><code>CO</code> - Colorado</li>
+          <li><code>CT</code> - Connecticut</li>
+          <li><code>DC</code> - District of Columbia</li>
+          <li><code>DE</code> - Delaware</li>
+          <li><code>FL</code> - Florida</li>
+          <li><code>GA</code> - Georgia</li>
+          <li><code>GU</code> - Guam</li>
+          <li><code>HI</code> - Hawaii</li>
+          <li><code>IA</code> - Iowa</li>
+          <li><code>ID</code> - Idaho</li>
+          <li><code>IL</code> - Illinois</li>
+          <li><code>IN</code> - Indiana</li>
+          <li><code>KS</code> - Kansas</li>
+          <li><code>KY</code> - Kentucky</li>
+          <li><code>LA</code> - Louisiana</li>
+          <li><code>MA</code> - Massachusetts</li>
+          <li><code>MD</code> - Maryland</li>
+          <li><code>ME</code> - Maine</li>
+          <li><code>MI</code> - Michigan</li>
+          <li><code>MN</code> - Minnesota</li>
+          <li><code>MO</code> - Missouri</li>
+          <li><code>MP</code> - Northern Mariana Islands</li>
+          <li><code>MS</code> - Mississippi</li>
+          <li><code>MT</code> - Montana</li>
+          <li><code>NC</code> - North Carolina</li>
+          <li><code>ND</code> - North Dakota</li>
+          <li><code>NE</code> - Nebraska</li>
+          <li><code>NH</code> - New Hampshire</li>
+          <li><code>NJ</code> - New Jersey</li>
+          <li><code>NM</code> - New Mexico</li>
+          <li><code>NV</code> - Nevada</li>
+          <li><code>NY</code> - New York</li>
+          <li><code>OH</code> - Ohio</li>
+          <li><code>OK</code> - Oklahoma</li>
+          <li><code>OR</code> - Oregon</li>
+          <li><code>PA</code> - Pennsylvania</li>
+          <li><code>PR</code> - Puerto Rico</li>
+          <li><code>RI</code> - Rhode Island</li>
+          <li><code>SC</code> - South Carolina</li>
+          <li><code>SD</code> - South Dakota</li>
+          <li><code>TN</code> - Tennessee</li>
+          <li><code>TX</code> - Texas</li>
+          <li><code>UT</code> - Utah</li>
+          <li><code>VA</code> - Virginia</li>
+          <li><code>VI</code> - US Virgin Islands</li>
+          <li><code>VT</code> - Vermont</li>
+          <li><code>WA</code> - Washington</li>
+          <li><code>WI</code> - Wisconsin</li>
+          <li><code>WV</code> - West Virginia</li>
+          <li><code>WY</code> - Wyoming</li>
+        </ul>
+        <p>
+          The <code>data</code> argument can be provided as a string surrounded by double
+          quotes ("") or a reference to a cell or multiple cells with the data arguments in them.
+          It excepts the following values as valid arguments:
+        </p>
+        <ul>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>positiveScore</code> - +1 for reporting positives reliably.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>negativeScore</code> - +1 for reporting negatives sometimes.</li>
+          <li><code>negativeRegularScore</code> - +1 for reporting negatives reliably.</li>
+          <li><code>commercialScore</code> - +1 for reporting all commercial tests.</li>
+          <li><code>score</code> - Total reporting quality score.</li>
+          <li><code>grade</code> - Letter grade based on score.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>dateModified</code> - ISO 8601 date of the time the data was last updated by the state.</li>
+          <li><code>dateChecked</code> - ISO 8601 date of the time we last visited their website</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has
+            been an unstable value and should not count in any totals.</li>
+        </ul>
+        <p>
+          The <code>date</code> argument can be provided as a string surrounded by double
+          quotes ("") or a reference to a cell or multiple cells with the desired dates in them.
+          It excepts any valid date in the format: <code>MM/DD/YYYY</code>. Data is saved each day at 4 pm ET.
+        </p>
+      </section>
+      <h5>US Data</h5>
+      <section class="my-3">
+        <h6><a id="us-raw-current"></a>US Raw Current Values</h6>
+        <pre>=GET_US_CURRENT_DATA_RAW()</pre>
+        <p>
+          Returns raw current data for entire US with the following columns:
+        </p>
+        <ul>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>lastModified</code> - The date the API cache was last updated. Even if the values didn't change but
+            the cache was manually cleared or reset the date will reflect that time of reset and doesn't necessarily
+            indicate an update was made. Manual cache clearing is rare however.</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates. Survives a cache reset.</li>
+          <li><code>posNeg</code> - DEPRECATED Renamed to totalTestResults.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has been an unstable value and should not count in any totals.</li>
+        </ul>
+      </section>
+      <section class="my-3">
+        <h6><a id="us-raw-historical"></a>US Raw Historical Data</h6>
+        <pre>=GET_US_HISTORICAL_DATA_RAW()</pre>
+        <p>
+          Returns raw historical data for entire US with the following columns. Data is updated each day at 4 pm ET.
+          This argument is <em>optional</em>. If a date is not provided, the latest data is returned.
+        </p>
+        <ul>
+          <li><code>date</code> - Date of the data.</li>
+          <li><code>states</code> - Quantity of states and territories that are reporting data.</li>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>positiveIncrease</code> - Increase from the day before.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>negativeIncrease</code> - Increase from the day before.</li>
+          <li><code>negativeRegularScore</code> - +1 for reporting negatives reliably.</li>
+          <li><code>commercialScore</code> - +1 for reporting all commercial tests.</li>
+          <li><code>score</code> - Total reporting quality score.</li>
+          <li><code>grade</code> - Letter grade based on score.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>totalTestResultsIncrease</code> - Increase from the day before.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>hospitalizedIncrease</code> - Increase from the day before.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>deathIncrease</code> - Increase from the day before.</li>
+          <li><code>dateModified</code> - ISO 8601 date of the time the data was last updated by the state.</li>
+          <li><code>dateChecked</code> - ISO 8601 date of when these values were valid.</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates.</li>
+          <li><code>pending</code> - Tests that have been submitted to a lab but no results have been reported yet.</li>
+          <li><code>posNeg</code> - DEPRECATED Renamed to totalTestResults.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has been an unstable value and should not count in any totals.</li>
+        </ul>
+      </section>
+      <section class="my-3">
+        <h6><a id="us-data"></a>Specific US Data</h6>
+        <pre>=GET_US_DATA(data, date)</pre>
+        <p>
+          Returns US related data, given a data and date argument.
+        </p>
+        <p>
+          The <code>data</code> argument can be provided as a string surrounded by double
+          quotes ("") or a reference to a cell or multiple cells with the data arguments in them.
+          It excepts the following values as valid arguments:
+        </p>
+        <ul>
+          <li><code>states</code> - Quantity of states and territories that are reporting data.</li>
+          <li><code>positive</code> - Total cumulative positive test results.</li>
+          <li><code>positiveIncrease</code> - Increase from the day before.</li>
+          <li><code>negative</code> - Total cumulative negative test results.</li>
+          <li><code>negativeIncrease</code> - Increase from the day before.</li>
+          <li><code>negativeRegularScore</code> - +1 for reporting negatives reliably.</li>
+          <li><code>commercialScore</code> - +1 for reporting all commercial tests.</li>
+          <li><code>score</code> - Total reporting quality score.</li>
+          <li><code>grade</code> - Letter grade based on score.</li>
+          <li><code>totalTestResults</code> - Calculated value (positive + negative) of total test results.</li>
+          <li><code>totalTestResultsIncrease</code> - Increase from the day before.</li>
+          <li><code>hospitalized</code> - Total cumulative number of people hospitalized.</li>
+          <li><code>hospitalizedIncrease</code> - Increase from the day before.</li>
+          <li><code>death</code> - Total cumulative number of people that have died.</li>
+          <li><code>deathIncrease</code> - Increase from the day before.</li>
+          <li><code>dateModified</code> - ISO 8601 date of the time the data was last updated by the state.</li>
+          <li><code>dateChecked</code> - ISO 8601 date of when these values were valid.</li>
+          <li><code>hash</code> - A unique ID changed every time the data updates.</li>
+          <li><code>pending</code> - Tests that have been submitted to a lab but no results have been reported yet.</li>
+          <li><code>posNeg</code> - DEPRECATED Renamed to totalTestResults.</li>
+          <li><code>total</code> - DEPRECATED Will be removed in the future. (positive + negative + pending). Pending
+            has been an unstable value and should not count in any totals.</li>
+        </ul>
+        <p>
+          The <code>date</code> argument can be provided as a string surrounded by double
+          quotes ("") or a reference to a cell or multiple cells with the desired dates in them.
+          It excepts any valid date in the format: <code>MM/DD/YYYY</code>. Data is updated each day at 4 pm ET. This
+          argument is <em>optional</em>. If a date is not provided, the latest data is returned.
+        </p>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>
