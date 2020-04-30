@@ -130,7 +130,7 @@ const getResultsFromData = (dateData, data) => {
 
 
 const fetchAPIData = (endpoint) => {
-  const url = 'https://covidtracking.com/api/' + endpoint;
+  const url = 'https://covidtracking.com/api/v1/' + endpoint;
   const response = UrlFetchApp.fetch(url);
   const json = JSON.parse(response.getContentText());
   
@@ -138,7 +138,7 @@ const fetchAPIData = (endpoint) => {
 }
 
 const fetchStatesData = (state, data, date) => {
-  const endpoint = 'states/daily';
+  const endpoint = 'states/daily.json';
   const json = fetchAPIData(endpoint);
   if (!json) {
     throw 'Could not find data.';
@@ -159,7 +159,7 @@ const fetchStatesData = (state, data, date) => {
 }
 
 const fetchUSData = (data, date) => {
-  const endpoint = 'us/daily';
+  const endpoint = 'us/daily.json';
   const json = fetchAPIData(endpoint);
   if (!json) {
     throw 'Could not find data.';
@@ -203,7 +203,7 @@ const mapJSONToArray = (data) => {
  * @customfunction
  */
 const GET_STATES_CURRENT_DATA_RAW = () => {
-  const json = fetchAPIData('states');
+  const json = fetchAPIData('states/current.json');
   if (!json) {
     throw 'Could not find data.';
   }
@@ -217,7 +217,7 @@ const GET_STATES_CURRENT_DATA_RAW = () => {
  * @customfunction
  */
 const GET_STATES_HISTORICAL_DATA_RAW = () => {
-  const json = fetchAPIData('states/daily');
+  const json = fetchAPIData('states/daily.json');
   if (!json) {
     throw 'Could not find data.';
   }
@@ -245,7 +245,7 @@ const GET_STATES_DATA = (state, data, date) => {
  * @customfunction
  */
 const GET_US_CURRENT_DATA_RAW = () => {
-  const json = fetchAPIData('us');
+  const json = fetchAPIData('us/current.json');
   if (!json) {
     throw 'Could not find data.';
   }
@@ -260,7 +260,7 @@ const GET_US_CURRENT_DATA_RAW = () => {
  * @customfunction
  */
 const GET_US_HISTORICAL_DATA_RAW = () => {
-  const json = fetchAPIData('us/daily');
+  const json = fetchAPIData('us/daily.json');
   if (!json) {
     throw 'Could not find data.';
   }
